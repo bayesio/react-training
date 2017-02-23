@@ -45,19 +45,17 @@ export function selectHero(id = null) {
   }
 }
 
-export function addHero(newHero, router) {
+export function addHero(newHero) {
   return async (dispatch) => {
     if (!newHero.uuid) {
       newHero.uuid = newHero.heroName.toLowerCase().replace(' ', '');
     }
 
-    const response = await _postAync(_URI, newHero);
-
-    router.push('/heroes');
+    const response = await _postAsync(_URI, newHero);
   }
 }
 
-async function _postAync(uri, jsonObject) {
+async function _postAsync(uri, jsonObject) {
   return await fetch(uri, {
     method: 'POST',
     headers: {

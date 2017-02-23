@@ -1,18 +1,21 @@
 import React from 'react';
+import { defaultHero } from '../Hero.actions';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getNewState = this.getNewState.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = this.getNewState(props);
+    this.state = defaultHero();
   }
 
-  getNewState(props) {
-    return Object.assign({}, props.hero);
+  async componentDidMount() {
+    const { selectHero, params } = this.props;
+
+    const hero = await selectHero(params.id);
+    this.setState(this.props.hero);
   }
 
   handleChange(event) {
@@ -37,15 +40,13 @@ export default class extends React.Component {
     this.setState(newState);
   }
 
-  handleSubmit(event) {
-    const {addHero} = this.props;
+  async handleSubmit(event) {
+    const {addHero, router} = this.props;
     event.preventDefault();
 
-    addHero(this.state);
-  }
+    await addHero(this.state);
 
-  componentWillReceiveProps(nextProps) {
-    this.setState(this.getNewState(nextProps));
+    router.push('/heroes');
   }
 
   render() {

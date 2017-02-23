@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: {
     app: './src/app.js',
-    vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux']
+    vendor: ['babel-polyfill','react', 'react-dom', 'react-router', 'redux', 'react-redux']
   },
   externals: {
     "jquery": "jQuery"

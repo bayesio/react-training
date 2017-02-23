@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
+    "pack": "webpack",
     "serve": "webpack-dev-server --open --hot --inline",
     "test": "nyc --reporter=html --require babel-register --require babel-polyfill mocha -- specs/**/*.js",
     "start": "npm run serve"
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "bootstrap": "^3.3.7",
     "immutable": "^3.8.1",
     "jquery": "^3.1.1",
@@ -24,7 +26,7 @@
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-loader": "^6.3.1",
-    "babel-polyfill": "^6.23.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",

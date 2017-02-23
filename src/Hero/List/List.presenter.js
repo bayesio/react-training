@@ -6,6 +6,11 @@ export default class extends React.Component {
     super(props);
   }
 
+  async componentDidMount() {
+    const { listHeroes } = this.props;
+    await listHeroes();
+  }
+
   render() {
     return (
       <section>

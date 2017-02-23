@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 import reducers from './combinedReducers';
@@ -11,7 +12,7 @@ import About from './About/About.presenter';
 import HeroList from './Hero/List/List.container'
 import HeroEdit from './Hero/Edit/Edit.container';
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(thunk));
 const app = document.getElementById('app');
 
 ReactDOM.render(

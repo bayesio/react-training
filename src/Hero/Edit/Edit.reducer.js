@@ -1,8 +1,8 @@
-import { generator, EVENTS } from './Edit.config';
+import { defaultHero, SELECT } from '../Hero.actions';
 
-export default (state = generator(), action) => {
+export default (state = defaultHero(), action) => {
   switch (action.type) {
-    case EVENTS.SELECT:
+    case SELECT:
       return Object.assign({}, action.payload);
     default:
       return state;

@@ -1,29 +1,20 @@
 import React from 'react';
-import $ from 'jquery';
 
 import { connect } from 'react-redux';
 
-import { URI, EVENTS } from './List.config'
+import { listHeroes } from '../Hero.actions';
 
 import List from './List.presenter';
 
 class ListContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.init = this.init.bind(this);
-  }
-
-  init(list) {
-    let {dispatch} = this.props;
-
-    dispatch({ type: EVENTS.LIST, payload: list })
   }
 
   componentDidMount() {
-    if (!this.props.heroes.length) {
-      $.getJSON(URI, ((data) => this.init(data)));
-    }
+    const { dispatch } = this.props;
+
+    dispatch(listHeroes());
   }
 
   render() {

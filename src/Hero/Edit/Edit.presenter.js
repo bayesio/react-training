@@ -80,45 +80,45 @@ export default class extends React.Component {
         <div className="col-md-6">
           <div className="form-group">
             <div className="row">
-              <label htmlFor="skill_fight" className="col-md-4">Fighting Skills</label>
+              <label htmlFor="skill_fight" className="col-md-4 text-right">Fighting Skills</label>
               <span className="col-md-1">{this.state.abilities.fightingSkills}</span>
             </div>
-            <input type="range" min="0" max="10" value={this.state.abilities.fightingSkills} onChange={this.handleChange} ref="skill_fight" id="skill_fight" className="form-control" />
+            <input type="range" min="0" max="7" value={this.state.abilities.fightingSkills} onChange={this.handleChange} ref="skill_fight" id="skill_fight" className="form-control" />
           </div>
           <div className="form-group">
             <div className="row">
-              <label htmlFor="skill_str" className="col-md-4">Strength</label>
+              <label htmlFor="skill_str" className="col-md-4 text-right">Strength</label>
               <span className="col-md-1">{this.state.abilities.strength}</span>
             </div>
-            <input type="range" min="0" max="10" value={this.state.abilities.strength} onChange={this.handleChange} ref="skill_str" id="skill_str" className="form-control" />
+            <input type="range" min="0" max="7" value={this.state.abilities.strength} onChange={this.handleChange} ref="skill_str" id="skill_str" className="form-control" />
           </div>
           <div className="form-group">
             <div className="row">
-              <label htmlFor="skill_dur" className="col-md-4">Durability</label>
+              <label htmlFor="skill_dur" className="col-md-4 text-right">Durability</label>
               <span className="col-md-1">{this.state.abilities.durability}</span>
             </div>
-            <input type="range" min="0" max="10" value={this.state.abilities.durability} onChange={this.handleChange} ref="skill_dur" id="skill_dur" className="form-control" />
+            <input type="range" min="0" max="7" value={this.state.abilities.durability} onChange={this.handleChange} ref="skill_dur" id="skill_dur" className="form-control" />
           </div>
           <div className="form-group">
             <div className="row">
-              <label htmlFor="skill_energy" className="col-md-4">Energy Projection</label>
+              <label htmlFor="skill_energy" className="col-md-4 text-right">Energy Projection</label>
               <span className="col-md-1">{this.state.abilities.energyProjection}</span>
             </div>
-            <input type="range" min="0" max="10" value={this.state.abilities.energyProjection} onChange={this.handleChange} ref="skill_energy" id="skill_energy" className="form-control" />
+            <input type="range" min="0" max="7" value={this.state.abilities.energyProjection} onChange={this.handleChange} ref="skill_energy" id="skill_energy" className="form-control" />
           </div>
           <div className="form-group">
             <div className="row">
-              <label htmlFor="skill_speed" className="col-md-4">Speed</label>
+              <label htmlFor="skill_speed" className="col-md-4 text-right">Speed</label>
               <span className="col-md-1">{this.state.abilities.speed}</span>
             </div>
-            <input type="range" min="0" max="10" value={this.state.abilities.speed} onChange={this.handleChange} ref="skill_speed" id="skill_speed" className="form-control" />
+            <input type="range" min="0" max="7" value={this.state.abilities.speed} onChange={this.handleChange} ref="skill_speed" id="skill_speed" className="form-control" />
           </div>
           <div className="form-group">
             <div className="row">
-              <label htmlFor="skill_intel" className="col-md-4">Intelligence</label>
+              <label htmlFor="skill_intel" className="col-md-4 text-right">Intelligence</label>
               <span className="col-md-1">{this.state.abilities.intelligence}</span>
             </div>
-            <input type="range" min="0" max="10" value={this.state.abilities.intelligence} onChange={this.handleChange} ref="skill_intel" id="skill_intel" className="form-control" />
+            <input type="range" min="0" max="7" value={this.state.abilities.intelligence} onChange={this.handleChange} ref="skill_intel" id="skill_intel" className="form-control" />
           </div>
         </div>
         <button type="submit" className="btn btn-primary col-md-offset-10 col-md-2">Submit</button>

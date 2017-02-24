@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: {
     app: './src/app.js',
-    vendor: ['babel-polyfill','react', 'react-dom', 'react-router', 'redux', 'react-redux']
+    vendor: ['babel-polyfill', 'react', 'react-dom', 'react-router', 'redux', 'react-redux']
   },
   externals: {
     "jquery": "jQuery"
@@ -16,25 +16,38 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015', 'react']
+            }
+          }
+        ],
       },
       {
         test: /\.css$/,
-        loader: 'style-loader'
-      }, {
-        test: /\.css$/,
-        loader: 'css-loader',
-        query: {
-          modules: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]'
-        }
-      }]
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+        ],
+      },
+      {
+        test: /\.useable\.css$/,
+        use: [
+          {
+            loader: "style-loader",
+            options: {
+              useable: true
+            },
+          },
+          { loader: "css-loader" },
+        ],
+      },
+    ]
   }
 }

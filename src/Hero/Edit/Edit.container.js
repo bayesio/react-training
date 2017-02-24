@@ -6,7 +6,7 @@ import { selectHero, addHero } from '../Hero.actions';
 import Edit from './Edit.presenter';
 
 const stateMapper = state => { 
-  return { hero: state.hero };
+  return { hero: state.hero.selected };
 };
 const dispatchProperties = dispatch => {
   return {

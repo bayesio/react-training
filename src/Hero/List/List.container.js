@@ -3,7 +3,7 @@ import { listHeroes } from '../Hero.actions';
 import List from './List.presenter';
 
 const mapStateToProps = state => {
-  return { heroes: state.heroes };
+  return { heroes: state.hero.list };
 };
 const mapDispatchToProps = dispatch => {
   return { listHeroes: () => dispatch(listHeroes()) };

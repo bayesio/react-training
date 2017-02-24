@@ -24,8 +24,13 @@ export function defaultHero() {
 
 export function listHeroes() {
   return async (dispatch) => {
+
+    const atLeast = _delay(2000);
+
     const heroes = await _getHeroListAsync();
 
+    await atLeast;
+    
     dispatch(_listHero(heroes));
   }
 }
@@ -37,9 +42,13 @@ export function selectHero(id = null) {
       return;
     }
 
+    const atLeast = _delay(2000);
+
     const heroes = await _getHeroListAsync();
 
     const hero = heroes.filter(h => h.uuid === id)[0];
+
+    await atLeast;
 
     dispatch(_selectHero(hero));
   }
@@ -51,8 +60,20 @@ export function addHero(newHero) {
       newHero.uuid = newHero.heroName.toLowerCase().replace(' ', '');
     }
 
-    const response = await _postAsync(_URI, newHero);
+    try {
+      const response = await _postAsync(_URI, newHero);
+    } catch (err) {
+      // TODO - log this
+    }
   }
+}
+
+function _delay(ms = 1000) {
+  return new Promise(
+    function(resolve, reject) {
+      setTimeout(() => resolve(), ms);
+    }
+  );
 }
 
 async function _postAsync(uri, jsonObject) {
@@ -66,10 +87,16 @@ async function _postAsync(uri, jsonObject) {
 }
 
 async function _getHeroListAsync() {
-  const response = await fetch(_URI, { 'method': 'GET' });
-  const result = await response.json();
+  try {
+    const response = await fetch(_URI, { 'method': 'GET' });
+    const result = await response.json();
 
-  return result;
+    return result;
+  }
+  catch (err) {
+    // TODO - log this
+    return [];
+  }
 }
 
 function _selectHero(payload) {

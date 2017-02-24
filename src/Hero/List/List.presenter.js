@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Loader from '../../shared/Loader/Loader.presenter';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
+
+    this.heroGrid = this.heroGrid.bind(this);
   }
 
   async componentDidMount() {
@@ -11,7 +14,7 @@ export default class extends React.Component {
     await listHeroes();
   }
 
-  render() {
+  heroGrid() {
     return (
       <section>
         <div className="row">
@@ -29,6 +32,10 @@ export default class extends React.Component {
         </div>
       </section>
     );
+  }
+
+  render() {
+    return this.props.heroes.length ? this.heroGrid() : <Loader />;
   }
 }
 

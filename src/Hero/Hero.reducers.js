@@ -1,7 +1,17 @@
-import ListReducer from './List/List.reducer';
-import EditReducer from './Edit/Edit.reducer';
+import { SELECT, LIST } from './Hero.actions';
 
-export default new Map([
- ['heroes', ListReducer],
- ['hero', EditReducer]
-]);
+const initialState = {
+  list: [],
+  selected: null
+}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case LIST:
+      return {...state, list: action.payload};
+    case SELECT:
+      return {...state, selected: action.payload};
+    default:
+      return state;
+  }
+}

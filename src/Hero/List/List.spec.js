@@ -1,15 +1,31 @@
+import 'jsdom-global/register'; // needed for mount to work
+
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import sinon from 'sinon';
+
+import { mount } from 'enzyme';
 import { expect } from 'chai';
 
-import Heroes from '../../src/components/Heroes'
+import HeroList from './List.presenter';
 
-const expected = {name: 'Jon Snow', email: 'jon.snow@got.com'};
-describe('<Heroes />', () => {
-  it(`renders a table with a row containing ${expected.name} and ${expected.email}.`, () => {
-    const wrapper = render(<Heroes heroes={[expected]} />)
+const expected = { uuid: 'kingofthenorth', heroName: 'King of the North', s3ImageUrl: 'snowman.jpg' };
+describe('<HeroList />', () => {
+  const spy = sinon.spy();
+  it('calls listHeroes on componentDidMount', () => {
+    const wrapper = mount(<HeroList heroes={[expected]} listHeroes={spy} />);
+    expect(spy.calledOnce).is.true;
+  });
 
-    expect(wrapper.text()).to.contain(expected.name);
-    expect(wrapper.text()).to.contain(expected.email);
+  it(`renders a grid with an anchor to ${expected.uuid} and a header of ${expected.heroName}`, () => {
+    const wrapper = mount(<HeroList heroes={[expected]} listHeroes={spy} />);
+
+    const anchor = wrapper.find('Link')
+      .filterWhere(c => c.prop('to') === `/hero/${expected.uuid}`)
+      .at(0);
+    expect(anchor).to.exist;
+
+    const header = anchor.find('h4').at(0);
+    expect(header).to.exist;
+    expect(header.text()).to.equal(expected.heroName);
   });
 });

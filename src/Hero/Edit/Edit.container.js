@@ -1,18 +1,17 @@
-import React from 'react'
-
 import { connect } from 'react-redux';
 import { selectHero, addHero } from '../Hero.actions';
 
 import Edit from './Edit.presenter';
 
-const stateMapper = state => { 
+export default connect(_mapStateToProps, _mapDispatchToProps)(Edit);
+
+function _mapStateToProps(state) {
   return { hero: state.hero.selected };
-};
-const dispatchProperties = dispatch => {
+}
+
+function _mapDispatchToProps(dispatch) {
   return {
     addHero: (newHero) => dispatch(addHero(newHero)),
     selectHero: (id) => dispatch(selectHero(id))
   };
-};
-
-export default connect(stateMapper, dispatchProperties)(Edit);
+}

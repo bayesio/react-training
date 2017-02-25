@@ -6,9 +6,9 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 import reducers from './combinedReducers';
-import Layout from './shared/_Layout';
-import Index from './Index/Index.presenter';
-import About from './About/About.presenter';
+import Layout from './shared/_Layout.presenter';
+import Index from './shared/Index/Index.presenter';
+import About from './shared/About/About.presenter';
 import HeroList from './Hero/List/List.container'
 import HeroEdit from './Hero/Edit/Edit.container';
 

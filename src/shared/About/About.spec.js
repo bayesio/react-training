@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'enzyme';
 import { expect } from 'chai';
 
-import About from '../../src/pages/About'
+import About from './About.presenter'
 
 const expected = 'Hello About';
 describe('<About />', () => {

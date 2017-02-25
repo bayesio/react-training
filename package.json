@@ -6,7 +6,7 @@
   "scripts": {
     "pack": "webpack",
     "serve": "webpack-dev-server --open --hot --inline",
-    "test": "nyc --reporter=html --require babel-register --require babel-polyfill mocha -- specs/**/*.js",
+    "test": "nyc --reporter=html --require babel-register --require ignore-styles --require babel-polyfill mocha -- src/**/*.spec.js",
     "start": "npm run serve"
   },
   "author": "",
@@ -34,6 +34,7 @@
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
     "http-server": "^0.9.0",
+    "ignore-styles": "^5.0.1",
     "jsdom": "9.11.0",
     "jsdom-global": "2.1.1",
     "mocha": "^3.2.0",

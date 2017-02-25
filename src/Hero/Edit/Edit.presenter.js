@@ -13,8 +13,9 @@ export default class extends React.Component {
 
   async componentDidMount() {
     const { selectHero, params } = this.props;
-
+    
     const hero = await selectHero(params.id);
+    console.log(JSON.stringify(hero));
     this.setState(this.props.hero);
   }
 

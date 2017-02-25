@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import { listHeroes } from '../Hero.actions';
 import List from './List.presenter';
 
-const mapStateToProps = state => {
+export default connect(_mapStateToProps, _mapDispatchToProps)(List);
+
+function _mapStateToProps(state) {
   return { heroes: state.hero.list };
-};
-const mapDispatchToProps = dispatch => {
-  return { listHeroes: () => dispatch(listHeroes()) };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+function _mapDispatchToProps(dispatch) {
+  return { listHeroes: () => dispatch(listHeroes()) };
+}

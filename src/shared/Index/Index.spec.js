@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'enzyme';
 import { expect } from 'chai';
 
-import Index from '../../src/pages/Index'
+import Index from './Index.presenter'
 
 const expected = 'Hello Index';
 describe('<Index />', () => {

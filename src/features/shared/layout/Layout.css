@@ -1,0 +1,17 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.navbar-brand {
+  padding-top: 8px;
+}
+
+.brand-logo {
+  height: 32px;
+  width: 32px;
+  vertical-align: middle;
+}

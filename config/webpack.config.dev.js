@@ -1,5 +1,5 @@
 const { CheckerPlugin } = require('awesome-typescript-loader')
-console.log(process.env.NODE_ENV);
+
 module.exports = {
   devServer: {
     compress: true,
@@ -9,8 +9,8 @@ module.exports = {
   },
   devtool: 'source-map',
   entry: {
-    app: './src/app.tsx',
-    vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux']
+    app: './src/app.js',
+    vendor: ['babel-polyfill', 'react', 'react-dom', 'react-router', 'redux', 'react-redux']
   },
   output: {
     filename: '[name].bundle.js',
@@ -18,7 +18,7 @@ module.exports = {
     path: __dirname + '/dist'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -30,6 +30,18 @@ module.exports = {
             loader: 'awesome-typescript-loader'
           }
         ]
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015', 'react']
+            }
+          }
+        ],
       },
       {
         test: /\.css$/,

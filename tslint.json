@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint:latest", "tslint-react"],
+  "rules": {
+    "jsx-alignment": false,
+    "jsx-no-lambda": true,
+    "member-access": [],
+    "quotemark": ["single"]
+  }
+}

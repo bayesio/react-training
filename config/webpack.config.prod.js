@@ -1,5 +1,5 @@
 const { CheckerPlugin } = require('awesome-typescript-loader')
-console.log(process.env.NODE_ENV);
+
 module.exports = {
   devServer: {
     compress: true,
@@ -9,7 +9,7 @@ module.exports = {
   },
   devtool: 'source-map',
   entry: {
-    app: './src/app.tsx',
+    app: './src/app.js',
     vendor: ['react', 'react-dom', 'react-router', 'redux', 'react-redux']
   },
   output: {
@@ -18,7 +18,7 @@ module.exports = {
     path: __dirname + '/dist'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css']
+    extensions: ['.ts', '.tsx']
   },
   module: {
     rules: [
